@@ -88,6 +88,107 @@ a { color: inherit; text-decoration: none; }
    место зарезервировано. Ждём от заказчика иконку. */
 .nav-item__icon--help { width: 5.33px; height: 10.67px; margin-right: 10.67px; }
 
+/* ---------- tabs (панель вкладок) ---------- */
+.tabs {
+  display: flex;
+  align-items: flex-end;
+  height: 53px;
+  padding: 0 8px;
+  background: #ececec;
+  border-bottom: 1px solid #a6cbe0;
+}
+
+.tabs__apps {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  margin: 0 8px 0 2px;
+}
+.tabs__apps svg { width: 23px; height: 23px; }
+
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 103px;
+  height: 50px;
+  background: #fff;
+  border: 1px solid #c5dced;
+  border-top: 2px solid #2b7dbc;
+  border-bottom: 0;
+  margin-bottom: -1px;            /* перекрыть нижнюю линию полосы */
+  color: #2b7dbc;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 12px;
+  line-height: 1.1;
+  text-align: center;
+}
+.tab__icon { width: 15px; height: 15px; margin-bottom: 2px; }
+
+/* ---------- page-head (заголовок + поиск + печать) ---------- */
+.page-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-top: 22px;
+}
+
+.page-head__title {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 19px;
+  font-weight: normal;
+  line-height: 1.1;
+  color: #2679b5;
+}
+
+.page-head__tools {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  flex: none;
+}
+
+/* нерабочий поиск: без обработчиков, только внешний вид */
+.search { display: flex; }
+.search__input {
+  width: 248px;
+  height: 23px;
+  padding: 0 8px;
+  border: 1px solid #f09784;
+  border-right: 0;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 13px;
+  color: #555;
+  outline: none;
+}
+.search__input::placeholder { color: #aaa; opacity: 1; }
+.search__btn {
+  width: 23px;
+  height: 23px;
+  flex: none;
+  padding: 0;
+  border: 0;
+  background: #abbac3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.search__btn svg { width: 13px; height: 13px; }
+
+.print-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #428bca;
+}
+.print-link__icon { width: 15px; height: 15px; }
+
 /* ---------- content ---------- */
 .content { padding: 0 12px; }
 

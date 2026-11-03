@@ -311,7 +311,7 @@
   }
 
   // ---------- init ----------
-  document.getElementById("app").addEventListener("click", function (e) {
+  document.body.addEventListener("click", function (e) {
     var link = e.target.closest("a[data-placeholder]");
     if (link) e.preventDefault();
   });
@@ -322,6 +322,9 @@
   initScrollUp();
 
   if (!key) return; // экран «не найдено» — ждём дизайн
+
+  var printLink = document.getElementById("print-link");
+  if (printLink) printLink.href = "/print.html?id=" + key;
 
   var app = document.getElementById("app");
   loadData(key)
