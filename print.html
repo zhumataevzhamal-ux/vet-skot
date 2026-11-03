@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Печать ВСД</title>
+  <link rel="stylesheet" href="/css/print.css">
+</head>
+<body>
+
+  <!--
+    Скрытая страница печати. Ссылок с лендинга на неё нет.
+    Открывается напрямую:  /print.html?id=<hash-key>
+    или через ЧПУ (Netlify): /print/<hash-key>
+    Содержимое — заготовка под официальную форму; верстается по дизайну заказчика.
+  -->
+
+  <div class="toolbar">
+    <button type="button" class="toolbar__btn" onclick="window.print()">Печать</button>
+  </div>
+
+  <main class="sheet" id="sheet">
+    <p class="state" id="state">Загрузка…</p>
+  </main>
+
+  <script src="/js/vendor/qrcode.js"></script>
+  <script src="/js/qr.js"></script>
+  <script src="/js/print.js"></script>
+</body>
+</html>

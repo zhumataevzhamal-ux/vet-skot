@@ -3,15 +3,21 @@
   publish = "."
   command = ""
 
-# Несуществующий мок -> честный 404 (иначе сработает правило ниже
+# Несуществующий мок -> честный 404 (иначе сработает catch-all ниже
 # и вместо JSON вернётся index.html).
 [[redirects]]
   from = "/mock/*"
   to = "/index.html"
   status = 404
 
+# ЧПУ для страницы печати: /print/<hash-key> -> /print.html?id=<hash-key>
+[[redirects]]
+  from = "/print/*"
+  to = "/print.html?id=:splat"
+  status = 200
+
 # Роутинг base_url/<hash-key>: любой путь отдаёт index.html.
-# Существующие файлы (css, js, assets, mock) отдаются как есть.
+# Существующие файлы (css, js, assets, mock, print.html) отдаются как есть.
 [[redirects]]
   from = "/*"
   to = "/index.html"

@@ -1,0 +1,72 @@
+/* Страница печати ВСД. Белый фон, чёрный текст, Times.
+   Раскладка 1:1 по бланку «Меркурий»: QR слева, текст справа. */
+
+* , *::before, *::after { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; background: #fff; }
+
+body {
+  font-family: "Times New Roman", Times, serif;
+  color: #000;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Панель с кнопкой печати — только на экране, в печать не идёт */
+.toolbar {
+  padding: 12px 16px;
+  background: #f4f4f4;
+  border-bottom: 1px solid #ddd;
+}
+
+.toolbar__btn {
+  padding: 6px 16px;
+  border: 1px solid #aaa;
+  background: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.toolbar__btn:hover { background: #f0f0f0; }
+
+/* Лист A4 */
+.sheet {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 16px auto;
+  padding: 15mm;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(0, 0, 0, .15);
+}
+
+.state { color: #777; }
+.state--error { color: #a40000; }
+
+/* --- документ: QR слева + текст справа --- */
+.doc {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.doc__qr {
+  flex: none;
+  width: 150px;
+  height: 150px;
+}
+
+.doc__text { flex: 1 1 auto; min-width: 0; }
+
+.doc__line { margin: 0; }
+.doc__line--bold { font-weight: bold; }
+.doc__line--code { font-weight: bold; font-size: 16px; }
+
+/* пустая строка перед строкой генерации */
+.doc__line--gen { margin-top: 22px; }
+
+/* Печать */
+@media print {
+  .toolbar { display: none; }
+  .sheet { width: auto; min-height: 0; margin: 0; padding: 0; box-shadow: none; }
+  @page { size: A4; margin: 15mm; }
+}
