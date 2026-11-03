@@ -3,20 +3,21 @@
 
   var UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
-  // Ключ для локальной разработки, когда в адресе нет hash-key
-  // (Live Server, /index.html и т.п.). На проде ключ всегда в пути.
+  // Демо-ключ, когда в адресе нет hash-key: только для localhost
+  // и тестового стенда на Netlify. На проде ключ всегда в пути.
+  // TODO: убрать *.netlify.app, когда появится боевой домен.
   var DEV_KEY = "775ec5ef-7bfa-445b-b9d7-919e42ac4585";
+  var DEMO_HOST_RE = /^(localhost|127\.0\.0\.1)$|\.netlify\.app$/;
 
   // base_url/hash-key  ->  hash-key
   function getKey() {
     var seg = location.pathname.replace(/^\/+|\/+$/g, "");
     if (UUID_RE.test(seg)) return seg.toLowerCase();
-    var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
-    return isLocal ? DEV_KEY : null;
+    return DEMO_HOST_RE.test(location.hostname) ? DEV_KEY : null;
   }
 
   function loadData(key) {
-    return fetch("mock/" + key + ".json").then(function (res) {
+    return fetch("/mock/" + key + ".json", { cache: "no-cache" }).then(function (res) {
       if (!res.ok) throw new Error("HTTP " + res.status);
       return res.json();
     });
@@ -182,7 +183,7 @@
       "Номер автомашины / полуприцепа / контейнера": function (td, value) {
         renderValue(td, value + " ");
         var flag = el("img", "flag");
-        flag.src = "assets/flag-kz.png";
+        flag.src = "/assets/flag-kz.png";
         flag.alt = "";
         td.appendChild(flag);
       }
